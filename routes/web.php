@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Landing Pages
+Route::view('/', 'landing.index');
+Route::view('/about', 'landing.about');
+Route::view('/service', 'landing.service');
+Route::view('/contact', 'landing.contact');
+
+//Career Routes
+Route::view('/careers', 'career.job');
+Route::view('/careers-details', 'career.job_detail');
+Route::view('/careers-apply', 'career.job_apply');
+
