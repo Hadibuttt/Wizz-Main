@@ -73,69 +73,42 @@
                         </div>
                         <!-- form -->
                         <form action="#" class="contact-form">
-                            <div class="row ">
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="input-form">
-                                        <input type="text" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
                                     <div class="select-items">
                                         <select name="select" id="select1">
-                                            <option value="">Freight Type</option>
-                                            <option value="">Catagories One</option>
-                                            <option value="">Catagories Two</option>
-                                            <option value="">Catagories Three</option>
-                                            <option value="">Catagories Four</option>
+                                            <option value="" disabled selected hidden>City</option>
+                                            @foreach (\App\Models\City::all() as $city)
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <div class="select-items">
                                         <select name="select" id="select1">
-                                            <option value="">Freight Type</option>
-                                            <option value="">Catagories One</option>
-                                            <option value="">Catagories Two</option>
-                                            <option value="">Catagories Three</option>
-                                            <option value="">Catagories Four</option>
+                                            <option value="" disabled selected hidden>Date Posted</option>
+                                            <option value="">Last Week</option>
+                                            <option value="">Last Month</option>
+                                            <option value="">Last Year</option>
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="flexTable">
                                     <div class="mainelement">
                                         <p>TITLE</p>
                                         <p>LOCATION</p>
                                         <p>DATE POSTED</p>
                                     </div>
-                                    <div class="element">
-                                        <a href="{{ url('/careers-details') }}">
-                                            <p>UI/UX Designer</p>
-                                            <p>Islamabad</p>
-                                            <p>13/2/2022</p>
-                                        </a>
-                                    </div>
-                                    <div class="element">
-                                        <a href="jobDescription.html" target="_blank">
-                                            <p>Full Stack Developer</p>
-                                            <p>Karachi</p>
-                                            <p>23/5/2022</p>
-                                        </a>
-                                    </div>
-                                    <div class="element">
-                                        <a href="jobDescription.html" target="_blank">
-                                            <p>UI/UX Designer</p>
-                                            <p>Islamabad</p>
-                                            <p>13/2/2022</p>
-                                        </a>
-                                    </div>
-                                    <div class="element">
-                                        <a href="jobDescription.html" target="_blank">
-                                            <p>Full Stack Developer</p>
-                                            <p>Karachi</p>
-                                            <p>23/5/2022</p>
-                                        </a>
-                                    </div>
+                                    @foreach ($jobs as $job)
+                                        <div class="element">
+                                            <a href="{{ url('/careers-details/'.encrypt($job->id)) }}">
+                                                <p>{{$job->title}}</p>
+                                                <p>{{$job->city->name}}</p>
+                                                <p>{{$job->created_at->format('d/m/Y')}}</p>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </form>
