@@ -23,6 +23,7 @@ Route::view('/contact', 'landing.contact');
 Route::get('/careers', [App\Http\Controllers\CareerController::class, 'view']);
 Route::get('/careers-details/{id}', [App\Http\Controllers\CareerController::class, 'details']);
 Route::get('/careers-apply/{id}', [App\Http\Controllers\CareerController::class, 'application_form']);
+Route::post('/careers-apply/job/{id}', [App\Http\Controllers\CareerController::class, 'application_form_apply']);
 
 
 
