@@ -62,7 +62,7 @@
                         </div>
                         <div class="info-caption">
                             <p>Columbia, SC 29201</p>
-                            <span>USA, New York - 10620</span>
+                            <span>PK, Islamabad - 4400</span>
                         </div>
                     </div>
                 </div>
