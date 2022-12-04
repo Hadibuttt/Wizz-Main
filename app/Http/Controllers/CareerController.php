@@ -133,11 +133,13 @@ class CareerController extends Controller
         $filename = $request->first_name.' '.$request->last_name.'-'.time().'.'.$uploadedFile->extension();
         $filepath = 'careers/'.$job->title.'/applicants'.'/'.$filename;
 
-        Storage::disk('local')->putFileAs(
-        'careers/'.$job->title.'/applicants'.'/',
-        $uploadedFile,
-        $filename
-        );
+        Storage::disk('s3')->put($filepath, file_get_contents($uploadedFile));
+
+        // Storage::disk('local')->putFileAs(
+        // 'careers/'.$job->title.'/applicants'.'/',
+        // $uploadedFile,
+        // $filename
+        // );
         }else{
             $filepath = '';
         }
